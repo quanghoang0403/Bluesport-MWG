@@ -9,10 +9,10 @@
     <link href="./images/favicon.ico" rel="shortcut icon" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="./css/owl.carousel.css">
-    <link rel="stylesheet" type="text/css" href="./css/global.css">
-    <link rel="stylesheet" type="text/css" href="./css/listing.css">
-    <link rel="stylesheet" type="text/css" href="./css/home.css">
+    <link rel="stylesheet" type="text/css" href="~/css/owl.carousel.css">
+    <link rel="stylesheet" type="text/css" href="~/css/global.css">
+    <link rel="stylesheet" type="text/css" href="~/css/listing.css">
+    <link rel="stylesheet" type="text/css" href="~/css/home.css">
 </head>
 <body>
 
@@ -21,58 +21,6 @@
     @RenderBody()
 
     @Html.Partial("Common/_PartialFooter")
-
-    <script src="./js/jquery.min.js"></script>
-    <script src="./js/owl.carousel.min.js"></script>
-    <script src="./js/common.js"></script>
-    <script>
-        $(document).ready(function () {
-            $(".listproduct-promo").owlCarousel({
-                items: 4,
-                dots: false,
-                margin: 14,
-                nav: true,
-            });
-            $(".listproduct-block").owlCarousel({
-                items: 5,
-                dots: false,
-                margin: 20,
-                nav: true,
-            });
-            $(".slider-banner").owlCarousel({
-                loop: true,
-                items: 1,
-                dots: true,
-                nav: false,
-                autoplay: true,
-                autoplayTimeout: 3000,
-                autoplayHoverPause: true
-            });
-
-            $(".trademark__list").owlCarousel({
-                items: 6,
-                dots: false,
-                margin: 20,
-                nav: true,
-            });
-            $(".trademark-post").owlCarousel({
-                items: 1,
-                dots: false,
-                nav: true,
-            });
-            $('.visit-checkbox').click(function () {
-                $('.visit-checkbox span').toggleClass('act');
-            });
-
-
-            $('.visit-btn').click(function () {
-                $('.visit__list').toggleClass('open');
-                $(this).toggleClass('act');
-                document.querySelector('.visit-btn span').innerHTML = "XEM THÊM 9 SIÊU THỊ";
-                document.querySelector('.visit-btn.act span').innerHTML = "THU GỌN";
-            });
-        });
-    </script>
 </body>
 
 </html>
