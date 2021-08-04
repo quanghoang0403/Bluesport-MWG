@@ -1,0 +1,151 @@
+﻿@model StoreDetailViewModel
+@{ ViewData["Title"] = @Model._store.name; }
+
+<head>
+    <link rel="stylesheet" type="text/css" href="./css/hethong_sieuthi.css">
+</head>
+
+
+<section>
+    <ul class="breadcrumb">
+        <li><a href="#">Danh sách siêu thị Bluesport</a></li>
+        <li><p>Chi tiết siêu thị @Model._store.name</p></li>
+    </ul>
+
+    <div class="detail">
+        <div class="detail__left">
+            <p class="detail-name">@Model._store.name</p>
+            <div class="detail-map">
+                <div class="detail-map-content">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.5237250082223!2d106.77408781459698!3d10.847713560840555!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3175270b7f18e5f3%3A0x9e2d0fb0d5ed027b!2zNzEgTMOqIFbEg24gVmnhu4d0LCBIaeG7h3AgUGjDuiwgUXXhuq1uIDksIFRow6BuaCBwaOG7kSBI4buTIENow60gTWluaCA3MDAwMCwgVmnhu4d0IE5hbQ!5e0!3m2!1svi!2s!4v1626789603666!5m2!1svi!2s" width="790" height="535" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+                <a href="#" class="detail-map-btn">XEM ĐƯỜNG ĐI ĐẾN SIÊU THỊ NÀY</a>
+            </div>
+            <div class="detail-promo-txt">
+                <h3>khuyến mãi</h3>
+                @{ foreach (var item in @Model._store.promotion)
+                    {
+        <p>@item</p> } }
+            </div>
+            <div class="detail-img">
+                <p class="detail-img-ttl">HÌNH ẢNH SIÊU THỊ</p>
+                <div class="detail-img-slider owl-carousel">
+                    @{ foreach (var item in @Model._store.images)
+                        {
+            <img src="~/@item" alt="test"> } }
+                </div>
+                <div class="counter"></div>
+            </div>
+        </div>
+        <div class="detail__right">
+            <div class="detail-show">
+                <div class="item">
+                    <p class="txt01">Địa chỉ</p>
+                    <p class="txt02">@Model._store.address</p>
+                </div>
+                <div class="item">
+                    <p class="txt01">Thời gian hoạt động</p>
+                    <p class="txt02">@Model._store.operatingTime</p>
+                </div>
+                <div class="item">
+                    <p class="txt01">Số điện thoại</p>
+                    <p class="txt02"><a href="tel:@Model._store.phoneNumber">@Model._store.phoneNumber</a> (Miễn phí)</p>
+                </div>
+            </div>
+            <div class="utilities">
+                <p class="utilities__ttl">CÁC TIỆN ÍCH TẠI SIÊU THỊ</p>
+                <ul class="utilities__list">
+                    <li>
+                        <div class="iconl">
+                            <i class="icon-xe"></i>
+                        </div>
+                        <p>Bãi giữ xe miễn phí rộng rãi, thoáng mát, nhân viên giữ xe chu đáo dắt xe cho khách hàng.</p>
+                    </li>
+                    <li>
+                        <div class="iconl">
+                            <i class="icon-hop"></i>
+                        </div>
+                        <p>Hàng hóa đa dạng từ nhóm hàng máy giặt, tivi, tủ lạnh, đồ gia dụng đến nhóm hàng điện thoại, laptop, máy tính bảng, phụ kiện.</p>
+                    </li>
+                    <li>
+                        <div class="iconl">
+                            <i class="icon-trainghiem"></i>
+                        </div>
+                        <p>Có quầy trải nghiệm sản phẩm công nghệ mới nhất.</p>
+                    </li>
+                    <li>
+                        <div class="iconl">
+                            <i class="icon-tuvan"></i>
+                        </div>
+                        <p>Có quầy tư vấn mua trả góp sản phẩm.</p>
+                    </li>
+                    <li>
+                        <div class="iconl">
+                            <i class="icon-nhanvien"></i>
+                        </div>
+                        <p>Nhân viên tư vấn sản phẩm nhiệt tình, nhiều kinh nghiệm.</p>
+                    </li>
+                    <li>
+                        <div class="iconl">
+                            <i class="icon-giaca"></i>
+                        </div>
+                        <p>Giá cả cạnh tranh trong khu vực, luôn luôn có khuyến mãi tất cả các nhóm hàng.</p>
+                    </li>
+                    <li>
+                        <div class="iconl">
+                            <i class="icon-cathe"></i>
+                        </div>
+                        <p>Mang máy cà thẻ thanh toán siêu nhanh tận nhà</p>
+                    </li>
+                    <li>
+                        <div class="iconl">
+                            <i class="icon-chinhsach"></i>
+                        </div>
+                        <p>Chính sách bảo hành đổi trả hấp dẫn, đơn giản (Xem chính sách bảo hành đổi trả tại siêu thị Điện máy XANH).</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="market-neighbor">
+        <div class="market-neighbor-ttl">SẮP KHAI TRƯƠNG</div>
+        <ul class="market-list">
+            @{ foreach (var item in @Model._grandOpeningStore)
+                {
+    <li>
+        <h4 class="ttl">@item.name</h4>
+        <div class="txt">
+            <p>
+                @item.address
+            </p>
+            <a asp-action="Detail" asp-controller="Store" asp-route-slug="@item.slug" class="goto-map">
+                <i class="icon-visitmap"></i>
+            </a>
+            <span class="time">15/09/2021</span>
+        </div>
+    </li>
+ } }
+        </ul>
+        <a href="#" class="btn-market">XEM THÊM 8 SIÊU THỊ LÂN CẬN</a>
+    </div>
+</section>
+
+<script src="~/js/jquery.min.js"></script>
+<script src="~/js/owl.carousel.min.js"></script>
+<script src="~/js/common.js"></script>
+<script>$(document).ready(function() {
+      $(".detail-img-slider").on("initialized.owl.carousel changed.owl.carousel", function(e) {
+        if (!e.namespace) {
+          return;
+        }
+        $(".counter").text(
+          e.relatedTarget.relative(e.item.index) + 1 + "/" + e.item.count
+        );
+      })
+      $(".detail-img-slider").owlCarousel({
+        items: 1,
+        dots: false,
+        nav: true,
+      });
+    });</script>

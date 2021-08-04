@@ -1,0 +1,73 @@
+
+.blog {
+    display: flex;
+    margin-top: 20px;
+}
+.blog__left {
+    padding-right: 20px;
+    width: calc(100% - 285px);
+}
+.blog__right {
+    width: 285px;
+}
+
+.blog-title {
+    font-size: 18px;
+    font-family: 'Roboto Condensed', sans-serif;
+    line-height: 24px;
+    text-transform: uppercase;
+}
+.block {
+    margin-bottom: 40px;
+}
+.block h3 {
+    font-size: 16px;
+    font-weight: bold;
+    font-family: 'Roboto Condensed', sans-serif;
+    line-height: 20px;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+}
+.block p {
+    line-height: 22px;
+}
+
+.content {
+    margin: 20px 0 60px;
+}
+
+.item-menu {
+    margin-bottom: 35px;
+}
+.item-menu-ttl {
+    font-size: 16px;
+    font-weight: bold;
+    font-family: 'Roboto Condensed', sans-serif;
+    line-height: 16px;
+    padding: 0 10px;
+    text-transform: uppercase;
+}
+.item-menu ul {
+    margin-top: 10px;
+}
+.item-menu ul li {
+    padding: 6px 10px;
+    transition: .2s;
+}
+.item-menu ul a {
+    color: #222;
+    font-size: 16px;
+    line-height: 24px;
+}
+.item-menu ul li.active {
+    background-color: #222;
+}
+.item-menu ul li.active a {
+    color: #FFF;
+}
+.item-menu ul li:hover {
+    background-color: #222;
+}
+.item-menu ul li:hover a {
+    color: #FFF;
+}

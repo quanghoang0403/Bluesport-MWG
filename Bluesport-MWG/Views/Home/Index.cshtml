@@ -1,0 +1,197 @@
+﻿@model HomeViewModel
+@{ ViewData["Title"] = "Trang chủ"; }
+<!-- Banner common -->
+@Html.Partial("_PartialBanner", Model.bannerModels)
+<!-- / Banner common -->
+<!-- Hot deal PROMO -->
+<div class="promo">
+    <section>
+        <h2 class="promo__ttl">HOT DEAL HÔM NAY</h2>
+        <ul class="common-tab">
+            <li class="active"><a href="#">TẤT CẢ</a></li>
+            <li><a href="#">XE ĐẠP</a></li>
+            <li><a href="#">CHẠY BỘ</a></li>
+            <li><a href="#">DỤNG CỤ</a></li>
+            <li><a href="#">XE ĐẠP</a></li>
+            <li><a href="#">CHẠY BỘ</a></li>
+        </ul>
+        @Html.Partial("_PartialProduct", Model.productModels)
+    </section>
+</div>
+<!-- / Hot deal PROMO -->
+
+<section>
+    <!-- Thể thao nam -->
+    <div class="block">
+        <div class="block__banner">
+            <img src="./images/block_banner01.png" alt="Thể thao nam">
+        </div>
+        <ul class="common-tab">
+            <li class="active"><a href="#">NỔI BẬT</a></li>
+            <li><a href="#">GIÀY DÉP</a></li>
+            <li><a href="#">ÁO - QUẦN</a></li>
+            <li><a href="#">DỤNG CỤ</a></li>
+        </ul>
+        @Html.Partial("_PartialProduct", Model.productModels)
+        <a href="#" class="c-btn c-btn-white">
+            <span>XEM TẤT CẢ GIÀY DÉP NAM</span>
+        </a>
+    </div>
+    <!-- / Thể thao nam -->
+    <!-- Thể thao nữ -->
+    <div class="block">
+        <div class="block__banner">
+            <img src="./images/block_banner02.png" alt="Thể thao nữ">
+        </div>
+        <ul class="common-tab">
+            <li class="active"><a href="#">NỔI BẬT</a></li>
+            <li><a href="#">GIÀY DÉP</a></li>
+            <li><a href="#">ÁO - QUẦN</a></li>
+            <li><a href="#">DỤNG CỤ</a></li>
+        </ul>
+        @Html.Partial("_PartialProduct", Model.productModels)
+        <a href="#" class="c-btn c-btn-white">
+            <span>XEM TẤT CẢ ÁO - QUẦN NỮ</span>
+        </a>
+    </div>
+    <!-- / Thể thao nữ -->
+    <!-- Thể thao trẻ em -->
+    <div class="block">
+        <div class="block__banner">
+            <img src="./images/block_banner03.png" alt="Thể thao trẻ em">
+        </div>
+        <ul class="common-tab">
+            <li class="active"><a href="#">NỔI BẬT</a></li>
+            <li><a href="#">GIÀY DÉP</a></li>
+            <li><a href="#">ÁO - QUẦN</a></li>
+            <li><a href="#">DỤNG CỤ</a></li>
+        </ul>
+        @Html.Partial("_PartialProduct", Model.productModels)
+        <a href="#" class="c-btn c-btn-white">
+            <span>XEM TẤT CẢ GIÀY DÉP TRẺ EM</span>
+        </a>
+    </div>
+    <!-- / Thể thao trẻ em -->
+    <!-- Xe đạp -->
+    <div class="block">
+        <div class="block__banner">
+            <img src="./images/block_banner04.png" alt="Xe đạp">
+        </div>
+        <ul class="common-tab">
+            <li class="active"><a href="#">NỔI BẬT</a></li>
+            <li><a href="#">GIÀY DÉP</a></li>
+            <li><a href="#">ÁO - QUẦN</a></li>
+            <li><a href="#">DỤNG CỤ</a></li>
+        </ul>
+        @Html.Partial("_PartialProduct", Model.productModels)
+        <a href="#" class="c-btn c-btn-white">
+            <span>XEM TẤT CẢ XE ĐẠP NỔI BẬT</span>
+        </a>
+    </div>
+    <!-- / Xe đạp -->
+    <!-- Các môn thể thao -->
+    <div class="block">
+        <div class="block__banner">
+            <img src="./images/block_banner05.png" alt="Các môn thể thao">
+        </div>
+        <ul class="common-tab">
+            <li class="active"><a href="#">NỔI BẬT</a></li>
+            <li><a href="#">GIÀY DÉP</a></li>
+            <li><a href="#">ÁO - QUẦN</a></li>
+            <li><a href="#">DỤNG CỤ</a></li>
+        </ul>
+        @Html.Partial("_PartialProduct", Model.productModels)
+        <a href="#" class="c-btn c-btn-white">
+            <span>XEM TẤT CẢ CÁC CHẠY BỘ</span>
+        </a>
+    </div>
+    <!-- / Các môn thể thao -->
+</section>
+
+<div class="trademark">
+    <section>
+        <h2 class="trademark__ttl">XEM SẢN PHẨM CÁC THƯƠNG HIỆU NỔI TIẾNG</h2>
+        <div class="trademark__list owl-carousel">
+            <div class="item"><img src="./images/img_thuonghieu01.png" alt="thuong hieu" width="102" height="68"></div>
+            <div class="item"><img src="./images/img_thuonghieu02.png" alt="thuong hieu" width="99" height="56"></div>
+            <div class="item"><img src="./images/img_thuonghieu03.png" alt="thuong hieu" width="105" height="63"></div>
+            <div class="item"><img src="./images/img_thuonghieu04.png" alt="thuong hieu" width="137" height="50"></div>
+            <div class="item"><img src="./images/img_thuonghieu05.png" alt="thuong hieu" width="108" height="54"></div>
+            <div class="item"><img src="./images/img_thuonghieu06.png" alt="thuong hieu" width="128" height="35"></div>
+            <div class="item"><img src="./images/img_thuonghieu01.png" alt="thuong hieu" width="102" height="68"></div>
+            <div class="item"><img src="./images/img_thuonghieu02.png" alt="thuong hieu" width="99" height="56"></div>
+            <div class="item"><img src="./images/img_thuonghieu03.png" alt="thuong hieu" width="105" height="63"></div>
+            <div class="item"><img src="./images/img_thuonghieu04.png" alt="thuong hieu" width="137" height="50"></div>
+            <div class="item"><img src="./images/img_thuonghieu05.png" alt="thuong hieu" width="108" height="54"></div>
+            <div class="item"><img src="./images/img_thuonghieu06.png" alt="thuong hieu" width="128" height="35"></div>
+        </div>
+        <div class="visit">
+            <div class="trademark-post owl-carousel">
+                <a href="#" class="post-item">
+                    <img src="./images/img_trademark.jpeg" alt="Không gian trẻ trung, hiện đại tư vấn chuyên nghiệp, tận tình">
+                    <p>Không gian trẻ trung, hiện đại tư vấn chuyên nghiệp, tận tình</p>
+                </a>
+                <a href="#" class="post-item">
+                    <img src="./images/img_trademark.jpeg" alt="Không gian trẻ trung, hiện đại tư vấn chuyên nghiệp, tận tình">
+                    <p>Không gian trẻ trung, hiện đại tư vấn chuyên nghiệp, tận tình</p>
+                </a>
+                <a href="#" class="post-item">
+                    <img src="./images/img_trademark.jpeg" alt="Không gian trẻ trung, hiện đại tư vấn chuyên nghiệp, tận tình">
+                    <p>Không gian trẻ trung, hiện đại tư vấn chuyên nghiệp, tận tình</p>
+                </a>
+            </div>
+            <div class="visit-main">
+                <h2 class="visit-main-ttl">GHÉ THĂM BLUESPORT</h2>
+                <p class="txt">Hiện mở bán 4 siêu thị tại TP. Hồ Chí Minh</p>
+                <div class="visit-checkbox">
+                    <span></span>
+                    <p>Tìm siêu thị gần bạn</p>
+                </div>
+                @Html.Partial("_PartialStore", Model.storeModels)
+                <a href="javascript:void(0)" class="visit-btn">
+                    <span>XEM THÊM 9 SIÊU THỊ</span>
+                </a>
+            </div>
+        </div>
+    </section>
+</div>
+
+<div class="commitment">
+    <ul>
+        <li>
+            <div class="li-icon">
+                <i class="icon-chinhhang"></i>
+            </div>
+            <div class="li-content">
+                <p class="txt-ttl">Chính hãng 100%</p>
+                <p class="txt-ct">Hơn 100 thương hiệu nổi tiếng</p>
+            </div>
+        </li>
+        <li>
+            <div class="li-icon">
+                <i class="icon-mpgiaohang"></i>
+            </div>
+            <div class="li-content">
+                <p class="txt-ttl">Miễn phí giao hàng</p>
+                <p class="txt-ct">Cho đơn hàng trên 500.000đ</p>
+            </div>
+        </li>
+        <li>
+            <div class="li-icon">
+                <i class="icon-doi1"></i>
+            </div>
+            <div class="li-content">
+                <p class="txt-ttl">1 đổi 1 trong vòng 1 năm</p>
+                <p class="txt-ct">Tại 200 cửa hàng trên toàn quốc</p>
+                <a href="#" class="txt-link">xem chi tiết</a>
+            </div>
+        </li>
+        <li>
+            <div class="li-icon">0%</div>
+            <div class="li-content">
+                <p class="txt-ttl">Trả góp 0%</p>
+                <p class="txt-ct">Qua thẻ hoặc duyệt hồ sơ<br>với mọi sản phẩm trên 1.5 triệu</p>
+            </div>
+        </li>
+    </ul>
+</div>

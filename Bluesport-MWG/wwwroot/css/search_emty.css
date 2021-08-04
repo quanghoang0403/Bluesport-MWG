@@ -1,0 +1,34 @@
+.search-empty .noti {
+    margin-top: 35px;
+    text-align: center;
+}
+.search-empty .noti p {
+    font-size: 16px;
+    line-height: 22px;
+    margin-top: 20px;
+}
+.search-empty .noti p span {
+    font-weight: bold;
+}
+.search-empty .content {
+    max-width: 330px;
+    margin: 30px auto 200px;
+    width: 100%;
+}
+.search-empty .content p {
+    line-height: 20px;
+}
+.search-empty .content p.circle {
+    position: relative;
+    padding-left: 20px;
+}
+.search-empty .content p.circle::before {
+    border-radius: 50%;
+    background-color: #222;
+    content: '';
+    height: 5px;
+    left: 5px;
+    position: absolute;
+    top: 7px;
+    width: 5px;
+}
