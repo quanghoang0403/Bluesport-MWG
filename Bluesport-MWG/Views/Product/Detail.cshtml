@@ -1,0 +1,352 @@
+﻿@using BlueSport_MWG.Models
+@model ProductDetailViewModel
+@{ ViewData["Title"] = @Model._productModel.name; }
+
+<head>
+    <link rel="stylesheet" type="text/css" href="~/css/fotorama.css">
+    <link rel="stylesheet" type="text/css" href="~/css/chitiet.css">
+</head>
+
+<section>
+    <ul class="breadcrumb">
+        <li><a href="#">Giày chạy bộ</a></li>
+        <li><a href="#">Giày nam</a></li>
+        <li><p>Adidas</p></li>
+    </ul>
+
+    <div class="detail">
+        <div class="detail__left">
+            <div class="fotorama">
+                <img src="~/@Model._productModel.image" alt="test">
+            </div>
+            <div class="info">
+                <div class="info__item">
+                    <p class="info-title">Thông tin sản phẩm</p>
+                    <div class="info-content">
+                        <ul class="info-article">
+                            @{ 
+                            foreach (var item in @Model._productModel.productDetail)
+                            {
+                                <li>
+                                    @{
+                                    foreach (KeyValuePair<string, string> detail in item)
+                                    {
+                                        <p class="txt01">@detail.Key</p>
+                                        <p class="txt02">@detail.Value</p> } 
+                                    }
+                                </li> 
+                            }}
+                        </ul>
+                        <p class="txtp">
+                            @Model._productModel.description
+                        </p>
+                        <ul class="info-policy">
+                            <li>
+                                <div class="iconL">
+                                    <i class="icon-giattay"></i>
+                                </div>
+                                <p>Không giặt tẩy</p>
+                            </li>
+                            <li>
+                                <div class="iconL">
+                                    <i class="icon-ui"></i>
+                                </div>
+                                <p>Ủi là nhiệt độ thấp</p>
+                            </li>
+                            <li>
+                                <div class="iconL">
+                                    <i class="icon-say"></i>
+                                </div>
+                                <p>Sấy nhiệt độ thấp</p>
+                            </li>
+                            <li>
+                                <div class="iconL">
+                                    <i class="icon-giatkho"></i>
+                                </div>
+                                <p>Không giặt khô</p>
+                            </li>
+                            <li>
+                                <div class="iconL">
+                                    <i class="icon-giatmay"></i>
+                                </div>
+                                <p>Giặt máy với nước lạnh</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="info__item">
+                    <p class="info-title">Thông tin thương hiệu @Model._productModel.brandName</p>
+                    <div class="info-content">
+                        <div class="info-img">
+                            <img src="~/images/chitiet_thuonghieu.png" alt="ADIDAS" width="59">
+                        </div>
+                        <p class="txtp">
+                            @Model._productModel.brandInfo
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="detail__right">
+            <h3 class="detail-title"><span>@Model._productModel.brandName</span> @Model._productModel.name</h3>
+            <div class="detail-top">
+                <span class="status">Còn hàng</span>
+                <span class="product-code">Mã sản phẩm: @Model._productModel.id</span>
+            </div>
+            <div class="detail-price">
+                <span class="price-current">@Model._productModel.priceCurrent</span>
+                <span class="price-old">@Model._productModel.priceOld</span>
+                <span class="price-percent">@Model._productModel.percentSaleOff</span>
+            </div>
+            <div class="select-color">
+                <p class="select-color-ttl">Chọn màu: <span>Trắng</span></p>
+                <ul>
+                    <li class="act">
+                        <img src="~/images/img_color.png" alt="test">
+                    </li>
+                    <li>
+                        <img src="~/images/img_color.png" alt="test">
+                    </li>
+                </ul>
+            </div>
+            <div class="select-size">
+                <div class="size-top">
+                    <p class="size-top-left">Chọn size: <span>42</span></p>
+                    <div class="size-top-right">
+                        <i class="icon-size"></i>
+                        Cách chọn size
+                    </div>
+                </div>
+                <ul class="size-list">
+                    @{ 
+                    foreach (var item in Model._productModel.sizes)
+                    {
+                        if (@item.IsDisable())
+                        {
+                            <li class="disabled">@item.name</li> 
+                        }
+                        else
+                        {
+                            <li>@item.name</li> 
+                        }
+
+                    }}
+                </ul>
+            </div>
+            <div class="box-promo">
+                <p class="box-promo-txt">@Model._productModel.promotion.promotionName</p>
+                <ul class="box-promo-list">
+                    @{ 
+                    foreach (var item in Model._productModel.promotion.promotionList)
+                    {
+                        if (item.IsOnlinePromotion())
+                        {
+                            <li>
+                                <span>Mua online thêm quà:</span> @item.promotionInfo
+                            </li> 
+                        }
+                        else
+                        {
+                            if (@item.IsMore())
+                            {
+                            <li>
+                                @item.promotionInfo (<a href="#">xem chi tiết</a>)
+                            </li> 
+                            }
+                            else
+                            {
+                                <li>@item.promotionInfo (không kèm KM khác)</li> 
+                            }               
+                        }
+                    }}
+                </ul>
+                <div class="bg-hide"></div>
+                <a href="javascript:void(0)" class="box-promo-btn"><span>Xem thêm</span></a>
+            </div>
+            <div class="detail-btn">
+                <a href="javascript:void(0)" class="btn btn-addcart">
+                    <p class="txt">THÊM VÀO GIỎ</p>
+                    <div class="qtySelector">
+                        <span class="decreaseQty"></span>
+                        <input type="text" value="1" class="qtyValue">
+                        <span class="increaseQty"></span>
+                    </div>
+                </a>
+                <a href="javascript:void(0)" class="btn btn-spmarket">SIÊU THỊ CÒN HÀNG</a>
+            </div>
+            <ul class="policy">
+                <li>
+                    <div class="iconl">
+                        <i class="icon-doitra"></i>
+                    </div>
+                    <p>Đổi trả, báo hành 30 ngày</p>
+                </li>
+                <li>
+                    <div class="iconl">
+                        <i class="icon-mienphigh"></i>
+                    </div>
+                    <p>Miễn phí giao hàng (đơn từ 300.000đ)</p>
+                </li>
+                <li>
+                    <div class="iconl">
+                        <i class="icon-cod"></i>
+                    </div>
+                    <p>Thanh toán COD + nhiều phương thức</p>
+                </li>
+                <li>
+                    <div class="iconl">
+                        <i class="icon-phone"></i>
+                    </div>
+                    <p>Tổng đài: <a href="tel:18001063">18001063</a><br> (9h00 - 21h00 mỗi ngày)</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="detail-product">
+        <p class="detail-product-ttl">Có thể bạn thích</p>
+        <div class="tab-product">
+            <a href="#" class="act">Giày Adidas</a>
+            <a href="#">Giày nam</a>
+        </div>
+
+        <div class="listproduct listproduct-detail owl-carousel">
+           @foreach (var item in Model._relatedProducts)
+            {
+                <div class="item">
+                    <a asp-action="Detail" asp-controller="Product" asp-route-slug="@item.slug">
+                        <div class="item-wrap">
+                            <div class="item-label">
+                                <span class="lb-percent">@item.percentSaleOff</span>
+                                <span class="lb-tragop">Góp 0%</span>
+                            </div>
+                            <div class="item-img">
+                                <img src="~/@item.image" alt="@item.name">
+                            </div>
+                        </div>
+                        <h3><span>@item.brandName</span>  @item.name </h3>
+                        <div class="price">
+                            <p class="price-current">@item.priceCurrent</p>
+                            <p class="price-old">@item.priceOld</p>
+                        </div>
+                    </a>
+                </div>
+            }
+        </div>
+
+        <a href="#" class="c-btn c-btn-white">
+            <span>XEM TẤT CẢ CÁC GIÀY ADIDAS</span>
+        </a>
+    </div>
+
+    <div class="show-market" id="market">
+        <a href="javascript:void(0)" class="show-market-close">
+            <i class="icon-closepopup"></i>
+        </a>
+        <div class="select-color">
+            <p class="select-color-ttl">Chọn màu: <span>Trắng</span></p>
+            <ul>
+                <li class="act">
+                    <img src="~/images/img_color.png" alt="test">
+                </li>
+                <li>
+                    <img src="~/images/img_color.png" alt="test">
+                </li>
+            </ul>
+        </div>
+        <div class="select-size">
+            <div class="size-top">
+                <p class="size-top-left">Chọn size: <span>42</span></p>
+                <div class="size-top-right">
+                    <i class="icon-size"></i>
+                    Cách chọn size
+                </div>
+            </div>
+            <ul class="size-list">
+                <li>40</li>
+                <li>41</li>
+                <li class="active">42</li>
+                <li>43</li>
+                <li>44</li>
+                <li>45</li>
+                <li>46</li>
+                <li>47</li>
+                <li>48</li>
+            </ul>
+        </div>
+        <div class="select-address">
+            <div class="item" id="provincial">
+                <p class="item-show">TP. Hồ Chí Minh</p>
+            </div>
+            <div class="item" id="district">
+                <p class="item-show">TP. Thủ Đức TP. Thủ Đức</p>
+            </div>
+            <ul class="item-list provincial">
+                <li>TP. Hồ Chí Minh</li>
+                <li>TP. Hồ Chí Minh</li>
+                <li>TP. Hồ Chí Minh</li>
+                <li>TP. Hồ Chí Minh</li>
+                <li>TP. Hồ Chí Minh</li>
+                <li>TP. Hồ Chí Minh</li>
+                <li>TP. Hồ Chí Minh</li>
+                <li>TP. Hồ Chí Minh</li>
+                <li>TP. Hồ Chí Minh</li>
+                <li>TP. Hồ Chí Minh</li>
+                <li>TP. Hồ Chí Minh</li>
+                <li>TP. Hồ Chí Minh</li>
+                <li>TP. Hồ Chí Minh</li>
+                <li>TP. Hồ Chí Minh</li>
+                <li>TP. Hồ Chí Minh</li>
+                <li>TP. Hồ Chí Minh</li>
+                <li>TP. Hồ Chí Minh</li>
+                <li>TP. Hồ Chí Minh</li>
+                <li>TP. Hồ Chí Minh</li>
+                <li>TP. Hồ Chí Minh</li>
+                <li>TP. Hồ Chí Minh</li>
+                <li>TP. Hồ Chí Minh</li>
+            </ul>
+            <ul class="item-list district">
+                <li>TP. Thủ Đức</li>
+                <li>TP. Thủ Đức</li>
+                <li>TP. Thủ Đức</li>
+                <li>TP. Thủ Đức</li>
+                <li>TP. Thủ Đức</li>
+                <li>TP. Thủ Đức</li>
+                <li>TP. Thủ Đức</li>
+            </ul>
+        </div>
+        <p class="total-market">Xem 3 siêu thị có hàng ở TP. HCM:</p>
+        <ul class="market-list">
+            <li>246 Đỗ Xuân Hợp, P.Phước Long A, Q.9, TP.HCM <a href="#">Đặt giữ hàng tại siêu thị</a></li>
+            <li>Số 203 Lã Xuân Oai, KP.04, P. Tăng Nhơn Phú A, Q. 9, TP. HCM <a href="#">Đặt giữ hàng tại siêu thị</a></li>
+            <li>Số 203 Lã Xuân Oai, KP.04, P. Tăng Nhơn Phú A, Q. 9, TP. HCM <a href="#">Xem đường đi</a></li>
+            <li>Số 203 Lã Xuân Oai, KP.04, P. Tăng Nhơn Phú A, Q. 9, TP. HCM<a href="#">Xem đường đi</a></li>
+            <li>Số 203 Lã Xuân Oai, KP.04, P. Tăng Nhơn Phú A, Q. 9, TP. HCM <a href="#">Xem đường đi</a></li>
+            <li>246 Đỗ Xuân Hợp, P.Phước Long A, Q.9, TP.HCM <a href="#">Đặt giữ hàng tại siêu thị</a></li>
+            <li>Số 203 Lã Xuân Oai, KP.04, P. Tăng Nhơn Phú A, Q. 9, TP. HCM <a href="#">Đặt giữ hàng tại siêu thị</a></li>
+            <li>Số 203 Lã Xuân Oai, KP.04, P. Tăng Nhơn Phú A, Q. 9, TP. HCM <a href="#">Xem đường đi</a></li>
+            <li>Số 203 Lã Xuân Oai, KP.04, P. Tăng Nhơn Phú A, Q. 9, TP. HCM<a href="#">Xem đường đi</a></li>
+            <li>Số 203 Lã Xuân Oai, KP.04, P. Tăng Nhơn Phú A, Q. 9, TP. HCM <a href="#">Xem đường đi</a></li>
+        </ul>
+        <div class="bg-gradient"></div>
+        <div class="market-bottom">
+            <a href="javascript:void(0)" class="btn-market fRoboto">
+                <i class="icon-map"></i>
+                XEM SIÊU THỊ CÓ HÀNG GẦN BẠN
+            </a>
+        </div>
+    </div>
+
+    <div class="popup-size">
+        <a href="javascript:void(0)" class="popup-size-close">
+            <i class="icon-closepopup"></i>
+        </a>
+        <img src="~/images/img_chonsize.png" alt="test">
+    </div>
+</section>
+
+<script src="~/js/jquery.min.js"></script>
+<script src="~/js/owl.carousel.min.js"></script>
+<script src="~/js/fotorama.js"></script>
+<script src="~/js/common.js"></script>
+<script src="~/js/chitiet.js"></script>

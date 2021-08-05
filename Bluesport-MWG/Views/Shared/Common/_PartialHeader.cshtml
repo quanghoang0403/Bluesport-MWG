@@ -10,31 +10,34 @@
                 <i class="icon-logo"></i>
             </a>
             <ul class="list-menu">
-                @{ foreach (var root in Model)
-                                {
+                @{ 
+                foreach (var root in Model)
+                {
                     <li>
                         <a href="javascript:void(0)">@root.name</a>
                         <div class="wrap-menu">
                             <div class="wrap-menu-main">
                                 <ul class="submenu">
-                                    @{ foreach (var sub in root.subCate)
-                                                        {
+                                    @{ 
+                                    foreach (var sub in root.subCate)
+                                    {
                                         <li>
                                             <a href="#">@sub.name</a>
                                             <ul class="sub-submenu">
-                                                @{ foreach (var last in sub.subCate)
-                                                                        {
-                                                    <li><a href="#">@last.name</a></li>
- } }
+                                            @{ 
+                                            foreach (var last in sub.subCate)
+                                            {
+                                               <li><a href="#">@last.name</a></li>
+                                            }}
                                             </ul>
                                         </li>
- } }
+                                    }}
                                 </ul>
                                 <a href="#" class="readmore-menu">Xem tất cả danh mục @root.name</a>
                             </div>
                         </div>
                     </li>
- } }
+                }}
             </ul>
             <form action="" class="header-search">
                 <input type="text" placeholder="Tìm kiếm tên thương hiệu, môn thể thao...">

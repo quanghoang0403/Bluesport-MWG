@@ -1,4 +1,5 @@
-﻿using Bluesport_MWG.Models;
+﻿using Bluesport_MWG.ModelDTO;
+using Bluesport_MWG.Models;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -11,19 +12,25 @@ namespace Bluesport_MWG.ModelsDTO
     {
         public string id { get; set; }
         public string name { get; set; }
+        public string slug { get; set; }
         public string image { get; set; }
         public float priceCurrent { get; set; }
         public float priceOld { get; set; }
         public float saleOff { get; set; }
         public string brandName { get; set; }
+        public string brandInfo { get; set; }
+        public string description { get; set; }
         public string imageBrand { get; set; }
+        public Dictionary<string, string>[] productDetail { get; set; }
+        public List<SizeDTO> sizes { get; set; }
+        public PromotionDTO promotion { get; set; }
     }
 
     public static class ProductDTOExt
     {
-        public static ProductModel ToProductDTO(this ProductDTO productDTO)
+        public static ProductModel ToProductModel(this ProductDTO productDTO)
         {
-            return new ProductModel()
+            var result = new ProductModel()
             {
                 name = productDTO.name,
                 image = productDTO.image,
@@ -31,14 +38,31 @@ namespace Bluesport_MWG.ModelsDTO
                 priceOld = productDTO.priceOld.ToCurrency(),
                 percentSaleOff = productDTO.saleOff.ToPercent(),
                 brandName = productDTO.brandName,
-                imageBrand = productDTO.imageBrand
+                brandInfo = productDTO.brandInfo,
+                description = productDTO.description,
+                imageBrand = productDTO.imageBrand,
+                productDetail = productDTO.productDetail,
+
+                slug = productDTO.slug,
+                promotion = productDTO.promotion.ToPromotionModel()
             };
+
+            result.sizes = new List<SizeModel>();
+            if (productDTO.sizes != null)
+            {
+                foreach (var item in productDTO.sizes)
+                {
+                    result.sizes.Add(item.ToSizeModel());
+                }
+            }
+
+            return result;
         }
 
         public static string ToCurrency(this float price)
         {
             CultureInfo cul = CultureInfo.GetCultureInfo("vi-VN");   
-            return price.ToString("#,###", cul.NumberFormat)+"đ";
+            return price.ToString("#,###", cul.NumberFormat)+ "₫";
         }
 
         public static string ToPercent(this float saleOff)

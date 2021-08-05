@@ -19,6 +19,12 @@ namespace Bluesport_MWG.Services
             _clientService = clientService;
             _apiName = "product";
         }
+        public ProductModel Get(string id)
+        {
+            var response = _clientService.Get(_apiName + "/" + id);
+            var productDTO = Newtonsoft.Json.JsonConvert.DeserializeObject<ProductDTO>(response.Content);
+            return productDTO.ToProductModel();
+        }
         public List<ProductModel> GetAll()
         {
             var response = _clientService.Get(_apiName);
@@ -28,11 +34,21 @@ namespace Bluesport_MWG.Services
             #region Mapping
             foreach (var item in productDTO)
             {
-                productModels.Add(item.ToProductDTO());
+                productModels.Add(item.ToProductModel());
             }
             #endregion
 
             return productModels;
+        }
+
+        public ProductModel GetBySlug(string slug)
+        {
+            var response = _clientService.Get(_apiName + "/" + slug);
+
+            var dataDto = Newtonsoft.Json.JsonConvert.DeserializeObject<ProductDTO>(response.Content);
+
+
+            return dataDto.ToProductModel();
         }
     }
 }

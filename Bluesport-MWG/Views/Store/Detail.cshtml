@@ -23,16 +23,20 @@
             </div>
             <div class="detail-promo-txt">
                 <h3>khuyến mãi</h3>
-                @{ foreach (var item in @Model._store.promotion)
-                    {
-        <p>@item</p> } }
+                @{ 
+                 foreach (var item in @Model._store.promotion)
+                 {
+                    <p>@item</p> 
+                 }}
             </div>
             <div class="detail-img">
                 <p class="detail-img-ttl">HÌNH ẢNH SIÊU THỊ</p>
                 <div class="detail-img-slider owl-carousel">
-                    @{ foreach (var item in @Model._store.images)
-                        {
-            <img src="~/@item" alt="test"> } }
+                    @{ 
+                     foreach (var item in @Model._store.images)
+                     {
+                        <img src="~/@item" alt="test"> 
+                     }}
                 </div>
                 <div class="counter"></div>
             </div>
@@ -111,21 +115,22 @@
     <div class="market-neighbor">
         <div class="market-neighbor-ttl">SẮP KHAI TRƯƠNG</div>
         <ul class="market-list">
-            @{ foreach (var item in @Model._grandOpeningStore)
-                {
-    <li>
-        <h4 class="ttl">@item.name</h4>
-        <div class="txt">
-            <p>
-                @item.address
-            </p>
-            <a asp-action="Detail" asp-controller="Store" asp-route-slug="@item.slug" class="goto-map">
-                <i class="icon-visitmap"></i>
-            </a>
-            <span class="time">15/09/2021</span>
-        </div>
-    </li>
- } }
+            @{ 
+            foreach (var item in @Model._grandOpeningStore)
+            {
+                <li>
+                    <h4 class="ttl">@item.name</h4>
+                    <div class="txt">
+                        <p>
+                            @item.address
+                        </p>
+                        <a asp-action="Detail" asp-controller="Store" asp-route-slug="@item.slug" class="goto-map">
+                            <i class="icon-visitmap"></i>
+                        </a>
+                        <span class="time">15/09/2021</span>
+                    </div>
+                </li>
+            }}
         </ul>
         <a href="#" class="btn-market">XEM THÊM 8 SIÊU THỊ LÂN CẬN</a>
     </div>

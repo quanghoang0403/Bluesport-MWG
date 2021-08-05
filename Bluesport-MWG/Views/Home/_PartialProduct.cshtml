@@ -5,7 +5,7 @@
         foreach (var item in Model)
         {
             <div class="item">
-                <a href="#">
+                <a asp-action="Detail" asp-controller="Product" asp-route-slug="@item.slug">
                     <div class="item-wrap">
                         <div class="item-label">
                             <span class="lb-percent">@item.percentSaleOff</span>
