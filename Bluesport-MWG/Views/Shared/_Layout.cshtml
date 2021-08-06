@@ -16,7 +16,7 @@
 </head>
 <body>
 
-    @Html.Partial("Common/_PartialHeader", Model._categories)
+    @await Component.InvokeAsync("Header");
 
     @RenderBody()
 

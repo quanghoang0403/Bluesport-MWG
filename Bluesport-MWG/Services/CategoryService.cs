@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Bluesport_MWG.ModelDTO;
 using Bluesport_MWG.Models;
 using Bluesport_MWG.Services.Interface;
@@ -16,9 +17,9 @@ namespace Bluesport_MWG.Service.Category
             _apiName = "category";
             _clientService = clientService;
         }
-        public List<CategoryModel> GetAll()
+        public async Task<List<CategoryModel>> GetAll()
         {
-            var response = _clientService.Get(_apiName);
+            var response = await _clientService.Get(_apiName);
             var dataDTO = Newtonsoft.Json.JsonConvert.DeserializeObject<List<CategoryDTO>>(response.Content);
             var categoryModels = new List<CategoryModel>();
             if (dataDTO != null)

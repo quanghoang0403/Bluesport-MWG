@@ -1,0 +1,21 @@
+﻿@model List<StoreModel>
+
+<div class="visit__list">
+    @{
+        if (Model != null)
+        {
+            foreach (var item in Model)
+            {
+                <a asp-action="Detail" asp-controller="Store" asp-route-slug="@item.slug" class="item">
+                    <p class="txt-name">@item.name</p>
+                    <div class="txt-address">
+                        <p>
+                            @item.address
+                        </p>
+                        <span><i class="icon-visitmap"></i></span>
+                    </div>
+                </a>
+            }
+        }
+    }
+</div>

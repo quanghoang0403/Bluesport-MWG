@@ -1,0 +1,13 @@
+﻿@model List<BannerModel>
+
+<div class="slider-banner owl-carousel">
+    @{
+        if (Model != null)
+        {
+            foreach (var item in Model)
+            {
+                <img src="~/@item.pathImg" alt="@item.altImg">
+            }
+        }
+    }
+</div>

@@ -1,0 +1,126 @@
+﻿@model List<CategoryModel>
+
+<header class="header">
+    <div class="header__address">
+        <a href="#">Bluesport mở bán 4 siêu thị ở TP. Hồ Chí Minh</a>
+    </div>
+    <div class="header__main">
+        <section>
+            <a asp-action="Index" asp-controller="Home" class="header-logo">
+                <i class="icon-logo"></i>
+            </a>
+            <ul class="list-menu">
+                @{
+                 foreach (var root in Model)
+                 {
+                    <li>
+                        <a href="javascript:void(0)">@root.name</a>
+                        <div class="wrap-menu">
+                            <div class="wrap-menu-main">
+                                <ul class="submenu">
+                                    @{ 
+                                        foreach (var sub in root.subCate)
+                                        {
+                                        <li>
+                                            <a href="#">@sub.name</a>
+                                            <ul class="sub-submenu">
+                                                @{ 
+                                                    foreach (var last in sub.subCate)
+                                                    {
+                                                    <li><a href="#">@last.name</a></li>
+                                                    }}
+                                            </ul>
+                                        </li> 
+                                        }}
+                                </ul>
+                                <a href="#" class="readmore-menu">Xem tất cả danh mục @root.name</a>
+                            </div>
+                        </div>
+                    </li>
+                 }}
+            </ul>
+            <form action="" class="header-search">
+                <input type="text" placeholder="Tìm kiếm tên thương hiệu, môn thể thao...">
+                <button><i class="icon-search"></i></button>
+            </form>
+            <a href="#" class="header-cart">
+                <i class="icon-cart"></i>
+                <span class="number">1</span>
+            </a>
+            <div class="search-show">
+                <div class="history-txt">
+                    <p class="txt">Có phải bạn muốn tìm</p>
+                    <p>Giày đá bóng nam</p>
+                    <p>Giày nike</p>
+                    <p>Giày thể thao nam </p>
+                </div>
+                <div class="search-product">
+                    <p class="search-product-txt">Sản phẩm gợi ý</p>
+                    <ul>
+                        <li>
+                            <a href="#">
+                                <div class="img">
+                                    <img src="./images/img_search.png" alt="ADIDAS Adizero Takumi Sen 7 Tokyo">
+                                </div>
+                                <div class="ct">
+                                    <h3>ADIDAS Adizero Takumi Sen 7 Tokyo</h3>
+                                    <div class="price">
+                                        <strong class="price-current">6.964.000đ</strong>
+                                        <span class="price-old">8.205.000đ</span>
+                                        <span class="price-percent">-20%</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <div class="img">
+                                    <img src="./images/img_search.png" alt="ADIDAS Adizero Takumi Sen 7 Tokyo">
+                                </div>
+                                <div class="ct">
+                                    <h3>ADIDAS Adizero Takumi Sen 7 Tokyo</h3>
+                                    <div class="price">
+                                        <strong class="price-current">6.964.000đ</strong>
+                                        <span class="price-old">8.205.000đ</span>
+                                        <span class="price-percent">-20%</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <div class="img">
+                                    <img src="./images/img_search.png" alt="ADIDAS Adizero Takumi Sen 7 Tokyo">
+                                </div>
+                                <div class="ct">
+                                    <h3>ADIDAS Adizero Takumi Sen 7 Tokyo</h3>
+                                    <div class="price">
+                                        <strong class="price-current">6.964.000đ</strong>
+                                        <span class="price-old">8.205.000đ</span>
+                                        <span class="price-percent">-20%</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <div class="img">
+                                    <img src="./images/img_search.png" alt="ADIDAS Adizero Takumi Sen 7 Tokyo">
+                                </div>
+                                <div class="ct">
+                                    <h3>ADIDAS Adizero Takumi Sen 7 Tokyo</h3>
+                                    <div class="price">
+                                        <strong class="price-current">6.964.000đ</strong>
+                                        <span class="price-old">8.205.000đ</span>
+                                        <span class="price-percent">-20%</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
+</header>
+<!-- / Header -->

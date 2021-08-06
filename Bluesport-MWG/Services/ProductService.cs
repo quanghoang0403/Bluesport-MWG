@@ -19,15 +19,15 @@ namespace Bluesport_MWG.Services
             _clientService = clientService;
             _apiName = "product";
         }
-        public ProductModel Get(string id)
+        public async Task<ProductModel> Get(string id)
         {
-            var response = _clientService.Get(_apiName + "/" + id);
+            var response = await _clientService.Get(_apiName + "/" + id);
             var productDTO = Newtonsoft.Json.JsonConvert.DeserializeObject<ProductDTO>(response.Content);
             return productDTO.ToProductModel();
         }
-        public List<ProductModel> GetAll()
+        public async Task<List<ProductModel>> GetAll()
         {
-            var response = _clientService.Get(_apiName);
+            var response = await _clientService.Get(_apiName);
             var productDTO = Newtonsoft.Json.JsonConvert.DeserializeObject<List<ProductDTO>>(response.Content);
             List<ProductModel> productModels = new List<ProductModel>();
 
@@ -41,9 +41,9 @@ namespace Bluesport_MWG.Services
             return productModels;
         }
 
-        public ProductModel GetBySlug(string slug)
+        public async Task<ProductModel> GetBySlug(string slug)
         {
-            var response = _clientService.Get(_apiName + "/" + slug);
+            var response = await _clientService.Get(_apiName + "/" + slug);
 
             var dataDto = Newtonsoft.Json.JsonConvert.DeserializeObject<ProductDTO>(response.Content);
 

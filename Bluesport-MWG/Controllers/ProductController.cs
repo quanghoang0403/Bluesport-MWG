@@ -12,20 +12,17 @@ namespace Bluesport_MWG.Controllers
     public class ProductController : Controller
     {
         private readonly IProductService _productService;
-        private readonly ICategoryService _categoryService;
-        public ProductController(IProductService productService, ICategoryService categoryService)
+        public ProductController(IProductService productService)
         {
             _productService = productService;
-            _categoryService = categoryService;
         }
         // GET
         [Route("san-pham/{slug}")]
-        public IActionResult Detail(string slug)
+        public async Task<IActionResult> Detail(string slug)
         {
             ProductDetailViewModel viewModel = new ProductDetailViewModel();
-            viewModel._productModel = _productService.GetBySlug(slug);
-            viewModel._relatedProducts = _productService.GetAll();
-            viewModel._categories = _categoryService.GetAll();
+            viewModel._productModel = await _productService.GetBySlug(slug);
+            viewModel._relatedProducts = await _productService.GetAll();
             return View(viewModel);
         }
     }

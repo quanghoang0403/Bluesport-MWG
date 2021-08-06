@@ -29,12 +29,12 @@ namespace Bluesport_MWG.Services
             _url = url;
             _basePath = basePath;
         }
-        public IRestResponse Get(string path)
+        public async Task<IRestResponse> Get(string path)
         {
             var client = new RestClient(_url + _basePath + path);
             client.Timeout = -1;
             var request = new RestRequest(Method.GET);
-            IRestResponse response = client.Execute(request);
+            IRestResponse response = await client.ExecuteAsync(request);
 
             return response;
         }

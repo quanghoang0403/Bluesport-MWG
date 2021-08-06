@@ -8,6 +8,6 @@ namespace Bluesport_MWG.Services.Interface
 {
     public interface IBannerService
     {
-        public List<BannerModel> GetAll();
+        public Task<List<BannerModel>> GetAll();
     }
 }

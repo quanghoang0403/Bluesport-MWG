@@ -1,9 +1,8 @@
 ﻿@model List<ProductModel>
 
-<div class="listproduct listproduct-block owl-carousel">
-    @{
-        foreach (var item in Model)
-        {
+<div class="listproduct listproduct-promo owl-carousel">
+    @{ foreach (var item in Model)
+       {
             <div class="item">
                 <a asp-action="Detail" asp-controller="Product" asp-route-slug="@item.slug">
                     <div class="item-wrap">
@@ -32,8 +31,6 @@
                         <img src="./images/img-color03.png" alt="test">
                     </a>
                 </div>
-            </div>
-        }
-    }
-      
+            </div> 
+       }}
 </div>

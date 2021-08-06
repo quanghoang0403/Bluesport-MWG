@@ -8,7 +8,7 @@ namespace Bluesport_MWG.Services.Interface
 {
     public interface IStoreService
     {
-        public List<StoreModel> GetAll();
-        public StoreModel GetBySlug(string slug);
+        public Task<List<StoreModel>> GetAll();
+        public Task<StoreModel> GetBySlug(string slug);
     }
 }

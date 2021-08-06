@@ -20,9 +20,9 @@ namespace Bluesport_MWG.Services
             _clientService = clientService;
             _apiName = "banner";
         }
-        public List<BannerModel> GetAll()
+        public async Task<List<BannerModel>> GetAll()
         {
-            var response = _clientService.Get(_apiName);
+            var response = await _clientService.Get(_apiName);
             var bannerDTO = Newtonsoft.Json.JsonConvert.DeserializeObject<List<BannerDTO>>(response.Content);
             List<BannerModel> bannerModels = new List<BannerModel>();
 
