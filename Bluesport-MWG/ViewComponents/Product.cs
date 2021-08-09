@@ -7,12 +7,12 @@ namespace MWG_BlueSport.ViewComponents
 {
     public class Product : ViewComponent
     {
-        public IViewComponentResult Invoke(List<ProductModel> products, bool whitebg = true)
+        public IViewComponentResult Invoke(List<ProductModel> products, bool isPromo = false)
         {
-            if (whitebg)
-                return View("WhiteBackground", products);
+            if (isPromo)
+                return View("PromoProduct", products);
 
-            return View("BlueBackground", products);
+            return View("BlockProduct", products);
         }
     }
 }

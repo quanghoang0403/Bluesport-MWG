@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Bluesport_MWG.Models
 {
-    public class HomeViewModel : BaseViewModel
+    public class HomeViewModel
     {
         public List<BannerModel> bannerModels { get; set; }
         public List<StoreModel> storeModels { get; set; }
