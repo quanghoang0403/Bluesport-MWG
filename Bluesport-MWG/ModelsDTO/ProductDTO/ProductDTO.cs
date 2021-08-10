@@ -1,4 +1,5 @@
-﻿using Bluesport_MWG.ModelDTO;
+﻿using Bluesport_MWG.Extensions;
+using Bluesport_MWG.ModelDTO;
 using Bluesport_MWG.Models;
 using System;
 using System.Collections.Generic;
@@ -57,17 +58,6 @@ namespace Bluesport_MWG.ModelsDTO
             }
 
             return result;
-        }
-
-        public static string ToCurrency(this float price)
-        {
-            CultureInfo cul = CultureInfo.GetCultureInfo("vi-VN");   
-            return price.ToString("#,###", cul.NumberFormat)+ "₫";
-        }
-
-        public static string ToPercent(this float saleOff)
-        {
-            return '-'+(saleOff*100).ToString()+'%';
         }
     }
 }

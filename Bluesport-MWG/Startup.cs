@@ -11,6 +11,10 @@ using Microsoft.Extensions.Hosting;
 using Bluesport_MWG.Service.Category;
 using Bluesport_MWG.Services;
 using Bluesport_MWG.Services.Interface;
+using System.IO;
+using NLog;
+using LoggerService;
+using GlobalErrorHandling.Extensions;
 
 namespace Bluesport_MWG
 {
@@ -18,6 +22,7 @@ namespace Bluesport_MWG
     {
         public Startup(IConfiguration configuration)
         {
+            //LogManager.LoadConfiguration(String.Concat(Directory.GetCurrentDirectory(), "/nlog.config"));
             Configuration = configuration;
         }
 
@@ -32,12 +37,13 @@ namespace Bluesport_MWG
             services.AddTransient<IProductService, ProductService>();
             services.AddSingleton<IClientService, ClientService>();
             services.AddSingleton<ICategoryService, CategoryService>();
+            services.AddSingleton<ILoggerManager, LoggerManager>();
 
             services.AddControllersWithViews();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerManager logger)
         {
             if (env.IsDevelopment())
             {
@@ -49,6 +55,7 @@ namespace Bluesport_MWG
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+            app.ConfigureExceptionHandler(logger);
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 

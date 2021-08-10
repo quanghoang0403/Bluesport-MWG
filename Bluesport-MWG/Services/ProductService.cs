@@ -14,10 +14,12 @@ namespace Bluesport_MWG.Services
     {
         private string _apiName;
         private readonly IClientService _clientService;
-        public ProductService(IClientService clientService)
+        private readonly ILoggerManager _logger;
+        public ProductService(IClientService clientService, ILoggerManager logger)
         {
             _clientService = clientService;
             _apiName = "product";
+            _logger = logger;
         }
         public async Task<ProductModel> Get(string id)
         {
@@ -27,17 +29,17 @@ namespace Bluesport_MWG.Services
         }
         public async Task<List<ProductModel>> GetAll()
         {
+            _logger.LogInfo("Fetching all the Students from the storage");
             var response = await _clientService.Get(_apiName);
             var productDTO = Newtonsoft.Json.JsonConvert.DeserializeObject<List<ProductDTO>>(response.Content);
             List<ProductModel> productModels = new List<ProductModel>();
-
             #region Mapping
             foreach (var item in productDTO)
             {
                 productModels.Add(item.ToProductModel());
             }
             #endregion
-
+            _logger.LogInfo($"Returning {productModels.Count} product.");
             return productModels;
         }
 
